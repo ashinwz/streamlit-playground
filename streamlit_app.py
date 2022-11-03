@@ -39,8 +39,7 @@ layout = [
     # Chart item is positioned in coordinates x=6 and y=0, and takes 6/12 columns and has a height of 3.
     dashboard.Item("chart", 6, 0, 6, 3),
     # Media item is positioned in coordinates x=0 and y=3, and takes 6/12 columns and has a height of 4.
-    dashboard.Item("media", 0 , 3, 6, 3),
-    dashboard.Item("data", 6, 3, 6, 3),
+    dashboard.Item("data", 0, 3, 12, 3),
 ]
 
 # Create a frame to display elements.
