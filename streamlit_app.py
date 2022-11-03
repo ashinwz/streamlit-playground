@@ -72,7 +72,85 @@ if tabs =='Dashboard':
                 with mui.CardActions:
                     mui.Button("Apply changes", onClick=sync())
 
-           
+            with mui.Card(key="chart", sx={"display": "flex", "flexDirection": "column", "borderRadius": 3, "overflow": "hidden"}):
+
+                # To make this header draggable, we just need to set its classname to 'draggable',
+                # as defined above in dashboard.Grid's draggableHandle.
+                padding="5px 15px 5px 15px"
+                with mui.Stack(
+                    className="draggable",
+                    alignItems="center",
+                    direction="row",
+                    spacing=1,
+                    sx={
+                        "padding": padding,
+                        "borderBottom": 1,
+                        "borderColor": "divider",
+                    }):
+                    mui.icon.Radar()
+                    mui.Typography("Radar chart", sx={"flex": 1})
+                    mui.IconButton(mui.icon.DarkMode)
+                # mui.icon.ViewCompact()
+                # mui.Typography("Data grid")
+
+
+                # Like above, we want to make our content grow and shrink as the user resizes the card,
+                # by setting flex to 1 and minHeight to 0.
+
+                with mui.CardContent(sx={"flex": 1, "minHeight": 0}):
+
+                # This is where we will draw our Bump chart.
+                #
+                # For this exercise, we can just adapt Nivo's example and make it work with Streamlit Elements.
+                # Nivo's example is available in the 'code' tab there: https://nivo.rocks/bump/
+                #
+                # Data takes a dictionary as parameter, so we need to convert our JSON data from a string to
+                # a Python dictionary first, with `json.loads()`.
+                #
+                # For more information regarding other available Nivo charts:
+                # https://nivo.rocks/
+
+                    nivo.Bump(
+                        data=json.loads(st.session_state.data),
+                        colors={ "scheme": "spectral" },
+                        lineWidth=3,
+                        activeLineWidth=6,
+                        inactiveLineWidth=3,
+                        inactiveOpacity=0.15,
+                        pointSize=10,
+                        activePointSize=16,
+                        inactivePointSize=0,
+                        pointColor={ "theme": "background" },
+                        pointBorderWidth=3,
+                        activePointBorderWidth=3,
+                        pointBorderColor={ "from": "serie.color" },
+                        axisTop={
+                            "tickSize": 5,
+                            "tickPadding": 5,
+                            "tickRotation": 0,
+                            "legend": "",
+                            "legendPosition": "middle",
+                            "legendOffset": -36
+                        },
+                        axisBottom={
+                            "tickSize": 5,
+                            "tickPadding": 5,
+                            "tickRotation": 0,
+                            "legend": "",
+                            "legendPosition": "middle",
+                            "legendOffset": 32
+                        },
+                        axisLeft={
+                            "tickSize": 5,
+                            "tickPadding": 5,
+                            "tickRotation": 0,
+                            "legend": "ranking",
+                            "legendPosition": "middle",
+                            "legendOffset": -40
+                        },
+                        margin={ "top": 40, "right": 100, "bottom": 40, "left": 60 },
+                        axisRight=None,
+                    )
 
 elif tabs == 'Money':
     st.title("Paper")
