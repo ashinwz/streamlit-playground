@@ -13,11 +13,26 @@ from streamlit_elements import elements, dashboard, mui, editor, media, lazy, sy
 # Change page layout to make the dashboard take the whole page.
 
 st.set_page_config(layout="wide")
-st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True)
+#st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True)
 
 with st.sidebar:
     tabs = on_hover_tabs(tabName=['Dashboard', 'Money', 'Economy'], 
-                         iconName=['dashboard', 'money', 'economy'], default_choice=0)
+                             iconName=['dashboard', 'money', 'economy'],
+                             styles = {'navtab': {'background-color':'#111',
+                                                  'color': '#818181',
+                                                  'font-size': '18px',
+                                                  'transition': '.3s',
+                                                  'white-space': 'nowrap',
+                                                  'text-transform': 'uppercase'},
+                                       'tabOptionsStyle': {':hover :hover': {'color': 'red',
+                                                                      'cursor': 'pointer'}},
+                                       'iconStyle':{'position':'fixed',
+                                                    'left':'7.5px',
+                                                    'text-align': 'left'},
+                                       'tabStyle' : {'list-style-type': 'none',
+                                                     'margin-bottom': '30px',
+                                                     'padding-left': '30px'}},
+                             key="1")
 
 # Initialize default data for code editor and chart.
 #
