@@ -32,7 +32,7 @@ button[kind="header"] {
     /* section[data-testid='stSidebar'] > div {
     height: 100%;
     width: 75px; /* Put some width to hover on. */
-    /* } 
+    /* }
     /* ON HOVER */
     section[data-testid='stSidebar'] > div:hover{
     width: 300px;
@@ -43,9 +43,9 @@ button[kind="header"] {
         display: none;
     }
 }
-     
+
 @media(max-width: 272px){
-    
+
     section[data-testid='stSidebar'] > div {
         width:15rem;
     }
