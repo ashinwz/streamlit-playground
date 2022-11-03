@@ -3,6 +3,7 @@
 import json
 import streamlit as st
 from pathlib import Path
+from st_on_hover_tabs import on_hover_tabs
 
 # As for Streamlit Elements, we will need all these objects.
 # All available objects and there usage are listed there: https://github.com/okld/streamlit-elements#getting-started
@@ -12,15 +13,11 @@ from streamlit_elements import elements, dashboard, mui, editor, media, lazy, sy
 # Change page layout to make the dashboard take the whole page.
 
 st.set_page_config(layout="wide")
+st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True)
 
 with st.sidebar:
-    st.title("🗓️ #30DaysOfStreamlit")
-    st.header("Day 27 - Streamlit Elements")
-    st.write("Build a draggable and resizable dashboard with Streamlit Elements.")
-    st.write("---")
-
-    # Define URL for media player.
-    media_url = st.text_input("Media URL", value="https://www.youtube.com/watch?v=vIQQR_yq-8I")
+    tabs = on_hover_tabs(tabName=['Dashboard', 'Money', 'Economy'], 
+                         iconName=['dashboard', 'money', 'economy'], default_choice=0)
 
 # Initialize default data for code editor and chart.
 #
@@ -51,7 +48,8 @@ layout = [
 
 # Create a frame to display elements.
 
-with elements("demo"):
+if tabs =='Dashboard':
+    with elements("demo"):
 
     # Create a new dashboard with the layout specified above.
     #
@@ -310,3 +308,11 @@ with elements("demo"):
                     disableSelectionOnClick=True,
                     onCellEditCommit=True,
                 )
+
+elif tabs == 'Money':
+    st.title("Paper")
+    st.write('Name of option is {}'.format(tabs))
+
+elif tabs == 'Economy':
+    st.title("Tom")
+    st.write('Name of option is {}'.format(tabs))
