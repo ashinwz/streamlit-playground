@@ -1,6 +1,5 @@
 section[data-testid='stSidebar'] > div:nth-of-type(1) {
     background-color: #111;
-    width: 45px;
 }
 
 button[kind="header"] {
