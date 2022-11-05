@@ -61,7 +61,7 @@ if tabs =='Dashboard':
                         "borderColor": "divider",
                     }):
                     mui.icon.PieChart()
-                    mui.Typography("Radar chart", sx={"flex": 1})
+                    mui.Typography("Editor", sx={"flex": 1})
                     mui.IconButton(mui.icon.DarkMode)
                 with mui.CardContent(sx={"flex": 1, "minHeight": 0}):
                     editor.Monaco(
@@ -164,7 +164,7 @@ if tabs =='Dashboard':
                         "borderColor": "divider",
                     }):
                     mui.icon.Radar()
-                    mui.Typography("data", sx={"flex": 1})
+                    mui.Typography("Data Table", sx={"flex": 1})
                     mui.IconButton(mui.icon.DarkMode)
 
                     DEFAULT_COLUMNS = [
