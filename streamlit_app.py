@@ -14,7 +14,7 @@ st.set_page_config(layout="wide")
 st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True)
 
 with st.sidebar:
-    tabs = on_hover_tabs(tabName=['Dashboard', 'Money', 'Economy'], iconName=['dashboard', 'money', 'economy'], default_choice=0)
+    tabs = on_hover_tabs(tabName=['Dashboard', 'APIs', 'Models'], iconName=['dashboard', 'money', 'economy'], default_choice=0)
 
 # Initialize default data for code editor and chart.
 #
@@ -45,6 +45,7 @@ layout = [
 # Create a frame to display elements.
 
 if tabs =='Dashboard':
+    st.title("Dashboard demo")
     with elements("demo"):
         with dashboard.Grid(layout, draggableHandle=".draggable"):
             with mui.Card(key="editor", sx={"display": "flex", "flexDirection": "column", "borderRadius": 3, "overflow": "hidden"}):
@@ -197,10 +198,10 @@ if tabs =='Dashboard':
                         onCellEditCommit=True,
                     )
 
-elif tabs == 'Money':
-    st.title("Paper")
+elif tabs == 'APIs':
+    st.title("APIs demo by Fastapi")
     st.write('Name of option is {}'.format(tabs))
 
-elif tabs == 'Economy':
+elif tabs == 'Models':
     st.title("Tom")
     st.write('Name of option is {}'.format(tabs))
